@@ -8,10 +8,7 @@ const nextConfig = {
             },
         ],
     },
-};
-
-export const config = {
     runtime: 'nodejs',
-}
+};
 
 module.exports = nextConfig;
