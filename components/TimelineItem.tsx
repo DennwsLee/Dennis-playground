@@ -13,7 +13,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ year, title, description, l
 
   return (
     <div 
-      className={`flex flex-col items-center space-y-4 w-64 transition-all duration-300 ${isCentered ? 'scale-100 opacity-100' : 'scale-90 opacity-50 blur-sm'}`}
+      className={`flex flex-col items-center space-y-4 w-64 -all duration-300 ${isCentered ? 'scale-100 opacity-100' : 'scale-90 opacity-50 blur-sm'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
