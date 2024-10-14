@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
 interface TimelineItemProps {
-  year: number;
+  timeframe: string;
   title: string;
   company: string;
   description: string[];
   isCentered: boolean;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({ year, title, company, description, isCentered }) => {
+const TimelineItem: React.FC<TimelineItemProps> = ({ timeframe, title, company, description, isCentered }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -18,8 +18,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ year, title, company, descr
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className={`flex flex-col items-center justify-center h-full transition-all duration-300 ${isHovered && isCentered ? 'w-1/3' : 'w-full'}`}>
-        <div className="text-5xl font-bold text-white mb-4">{year}</div>
-        <div className="h-40 w-1 bg-white relative">
+      <div className="text-3xl font-bold text-white mb-4">{timeframe}</div>       
+       <div className="h-40 w-1 bg-white relative">
           <div className={`absolute w-4 h-4 bg-blue-400 rounded-full left-1/2 transform -translate-x-1/2 transition-all duration-300 ${isHovered ? 'scale-150' : ''}`} style={{top: '50%'}}></div>
         </div>
         <div className="text-center mt-4">

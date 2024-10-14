@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className={`min-h-screen w-full bg-black text-white ${manrope.className}`}>
       <Navbar />
-      <main className="max-w-4xl mx-auto px-4 py-20">
+      <main className="max-w-7xl mx-auto px-4 py-20">
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,11 +40,11 @@ export default function Home() {
 
         <section className="mb-20">
           <h2 className="text-3xl font-bold mb-6">My Journey</h2>
-          <div className="relative h-[70vh]">
+          <div className="relative h-[70vh] max-w-6xl mx-auto">
             <Timeline currentIndex={currentIndex} />
             <TimelineNavigation
               onPrev={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
-              onNext={() => setCurrentIndex(Math.min(3, currentIndex + 1))}
+              onNext={() => setCurrentIndex(Math.min(4, currentIndex + 1))}
             />
           </div>
         </section>

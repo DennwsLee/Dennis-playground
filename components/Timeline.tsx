@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import TimelineItem from '@/components/TimelineItem';
 
 interface TimelineProps {
@@ -7,41 +7,25 @@ interface TimelineProps {
 
 const Timeline: React.FC<TimelineProps> = ({ currentIndex }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
+  const [prevIndex, setPrevIndex] = useState(currentIndex);
 
   useEffect(() => {
     if (scrollRef.current) {
       const itemWidth = scrollRef.current.offsetWidth;
+      const newDirection = currentIndex > prevIndex ? 'right' : 'left';
+      setDirection(newDirection);
       scrollRef.current.scrollTo({
         left: currentIndex * itemWidth,
         behavior: 'smooth'
       });
     }
-  }, [currentIndex]);
+    setPrevIndex(currentIndex);
+  }, [currentIndex, prevIndex]);
 
   const items = [
     {
-      year: 2023,
-      title: "Undergraduate Researcher",
-      company: "Autonomous Connected Transportation Lab",
-      description: [
-        "Created predictive models using XGBoost, SHAP, PyTorch",
-        "Generated multi-objective optimization models (MOO)",
-        "Improved transit efficiency by 15% and reduced emissions by 22%"
-      ]
-    },
-    {
-      year: 2023,
-      title: "Software Engineer Intern",
-      company: "Automorphic AI (YC S23)",
-      description: [
-        "Designed and optimized inference engine, reducing latency by 17%",
-        "Forward deployed engineer in integrating containerized docker environments",
-        "Built and deployed 12 web apps using Next.js, Typescript, Python, and SQL",
-        "Led the integration of S3 and Redshift for seamless data ingestion"
-      ]
-    },
-    {
-      year: 2024,
+      timeframe: "Jan 2024 - Present",
       title: "Machine Learning Engineer",
       company: "Automorphic AI (YC S23)",
       description: [
@@ -52,7 +36,7 @@ const Timeline: React.FC<TimelineProps> = ({ currentIndex }) => {
       ]
     },
     {
-      year: 2024,
+      timeframe: "Aug 2024 - Present",
       title: "Data Science / ML Intern",
       company: "Lucid Motors",
       description: [
@@ -64,6 +48,37 @@ const Timeline: React.FC<TimelineProps> = ({ currentIndex }) => {
         "Created a customer issue diagnosis system"
       ]
     },
+    {
+      timeframe: "May 2024 - Aug 2024",
+      title: "AI Program Manager Intern",
+      company: "Lucid Motors",
+      description: [
+        "Defined business requirement documentation for use of AI in customer care processes",
+        "Used Lucid Chart to outline existing roadside assistance processes and where automation can occur",
+        "Meeting with key stakeholders to define specific requirements and communicating with data scientist",
+      ]
+    },
+    {
+      timeframe: "Aug 2023 - Dec 2023",
+      title: "Undergraduate Researcher",
+      company: "Autonomous Connected Transportation Lab",
+      description: [
+        "Created predictive models using XGBoost, SHAP, PyTorch",
+        "Generated multi-objective optimization models (MOO)",
+        "Improved transit efficiency by 15% and reduced emissions by 22%"
+      ]
+    },
+    {
+      timeframe: "May 2023 - Aug 2023",
+      title: "Software Engineer Intern",
+      company: "Automorphic AI (YC S23)",
+      description: [
+        "Designed and optimized inference engine, reducing latency by 17%",
+        "Forward deployed engineer in integrating containerized docker environments",
+        "Built and deployed 12 web apps using Next.js, Typescript, Python, and SQL",
+        "Led the integration of S3 and Redshift for seamless data ingestion"
+      ]
+    }
   ];
 
   return (
@@ -73,10 +88,11 @@ const Timeline: React.FC<TimelineProps> = ({ currentIndex }) => {
       style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
     >
       {items.map((item, index) => (
-        <div key={item.year + item.title} className="snap-center flex-shrink-0 w-full h-full">
+        <div key={item.timeframe + item.title} className="snap-center flex-shrink-0 w-full h-full">
           <TimelineItem 
             {...item}
             isCentered={index === currentIndex}
+            direction={direction}
           />
         </div>
       ))}
