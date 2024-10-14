@@ -7,6 +7,7 @@ import ContactSection from '@/components/contact-section';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Manrope } from 'next/font/google';
+import TimelineNavigation from '@/components/TimelineNavigation';
 
 const manrope = Manrope({ subsets: ['latin'] });
 
@@ -17,7 +18,7 @@ export default function Home() {
     <div className={`min-h-screen w-full bg-black text-white ${manrope.className}`}>
       <Navbar />
       <main className="max-w-4xl mx-auto px-4 py-20">
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -41,20 +42,10 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-6">My Journey</h2>
           <div className="relative h-[70vh]">
             <Timeline currentIndex={currentIndex} />
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-              <button 
-                className="bg-white text-black font-bold py-2 px-4 rounded-full mr-4 hover:bg-gray-200 transition duration-300"
-                onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
-              >
-                Previous
-              </button>
-              <button 
-                className="bg-white text-black font-bold py-2 px-4 rounded-full hover:bg-gray-200 transition duration-300"
-                onClick={() => setCurrentIndex(Math.min(3, currentIndex + 1))}
-              >
-                Next
-              </button>
-            </div>
+            <TimelineNavigation
+              onPrev={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
+              onNext={() => setCurrentIndex(Math.min(3, currentIndex + 1))}
+            />
           </div>
         </section>
 

@@ -21,7 +21,7 @@ const Timeline: React.FC<TimelineProps> = ({ currentIndex }) => {
   const items = [
     {
       year: 2023,
-      title: "Researcher",
+      title: "Undergraduate Researcher",
       company: "Autonomous Connected Transportation Lab",
       description: [
         "Created predictive models using XGBoost, SHAP, PyTorch",
