@@ -29,7 +29,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ year, title, company, descr
       </div>
       {isHovered && isCentered && (
         <div className="w-2/3 h-full flex items-center transition-all duration-300 overflow-hidden p-6">
-          <ul className="list-disc list-inside text-2xl text-gray-300 space-y-4">
+          <ul className="list-disc list-inside text-4xl text-gray-300 space-y-4">
             {description.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
