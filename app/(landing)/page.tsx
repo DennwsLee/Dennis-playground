@@ -132,7 +132,7 @@ export default function Home() {
               <li>Languages: Python, TypeScript, SQL</li>
               <li>Frameworks: React, Next.js, PyTorch</li>
               <li>AI/ML: LLMs, XGBoost, SHAP</li>
-              <li>Cloud: AWS (S3, Redshift, Sagemaker, Bedrock)</li>
+              <li>Cloud: AWS (S3, Redshift, Sagemaker, BedRock)</li>
               <li>Tools: Docker, Git, Lucid Chart</li>
             </ul>
           </div>
