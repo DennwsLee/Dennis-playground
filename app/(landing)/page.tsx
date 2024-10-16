@@ -3,20 +3,26 @@ import { useState } from 'react';
 import Desktop from '@/components/Desktop';
 import Window from '@/components/Window';
 import Taskbar from '@/components/Taskbar';
-import { Roboto_Mono } from 'next/font/google';
-
-const robotoMono = Roboto_Mono({ subsets: ['latin'] });
+import Image from 'next/image';
 
 export default function Home() {
   const [openWindows, setOpenWindows] = useState<string[]>([]);
 
   const toggleWindow = (windowName: string) => {
-    setOpenWindows(prev => 
+    setOpenWindows(prev =>
       prev.includes(windowName)
         ? prev.filter(name => name !== windowName)
         : [...prev, windowName]
     );
   };
+
+  const desktopIcons = [
+    { name: 'My Computer', icon: '/icons/my-computer.png', onClick: () => toggleWindow('about') },
+    { name: 'My Documents', icon: '/icons/my-documents.png', onClick: () => toggleWindow('experience') },
+    { name: 'My Projects', icon: '/icons/folder.png', onClick: () => toggleWindow('projects') },
+    { name: 'My Skills', icon: '/icons/computer.png', onClick: () => toggleWindow('skills') },
+    { name: 'Contact Me', icon: '/icons/msn.png', onClick: () => toggleWindow('contact') },
+  ];
 
   const experienceItems = [
     {
@@ -77,82 +83,82 @@ export default function Home() {
   ];
 
   return (
-    <div className={`min-h-screen w-full bg-[#008080] text-black overflow-hidden ${robotoMono.className}`}>
-      <Desktop onIconClick={toggleWindow} />
-      
-      {openWindows.includes('about') && (
-        <Window title="About Me - Notepad" onClose={() => toggleWindow('about')}>
-          <div className={`min-h-screen w-full bg-[#008080] text-black overflow-hidden ${robotoMono.className}`}>
-            <p className="mb-2">Hello, I'm Dennis Lee</p>
-            <p>
-              I'm a Full-Stack Developer and Data Scientist passionate about creating innovative solutions and deriving insights from data.
-            </p>
-          </div>
-        </Window>
-      )}
-
-      {openWindows.includes('experience') && (
-        <Window title="My Experience - Resume.txt" onClose={() => toggleWindow('experience')}>
-          <div className={`text-sm overflow-y-auto max-h-96 ${robotoMono.className}`}>
-            {experienceItems.map((item, index) => (
-              <div key={index} className="mb-4">
-                <p className="font-bold">{item.title}</p>
-                <p>{item.company}</p>
-                <p className="text-xs">{item.timeframe}</p>
-                <ul className="list-disc pl-5 mt-1">
-                  {item.description.map((desc, i) => (
-                    <li key={i} className="text-xs">{desc}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </Window>
-      )}
-
-      {openWindows.includes('projects') && (
-        <Window title="My Projects - Projects.txt" onClose={() => toggleWindow('projects')}>
-          <div className={`text-sm ${robotoMono.className}`}>
-            <p className="font-bold mb-2">Featured Projects:</p>
-            <ul className="list-disc pl-5">
-              <li>AI-powered customer issue diagnosis system</li>
-              <li>Hybrid, low latency voice assistant</li>
-              <li>Multi-objective optimization models for transit efficiency</li>
-              <li>Containerized inference engine with 17% latency reduction</li>
-            </ul>
-          </div>
-        </Window>
-      )}
-
-      {openWindows.includes('skills') && (
-        <Window title="My Skills - Skills.txt" onClose={() => toggleWindow('skills')}>
-          <div className={`text-sm ${robotoMono.className}`}>
-            <p className="font-bold mb-2">Technical Skills:</p>
-            <ul className="list-disc pl-5">
-              <li>Languages: Python, TypeScript, SQL</li>
-              <li>Frameworks: React, Next.js, PyTorch</li>
-              <li>AI/ML: LLMs, XGBoost, SHAP</li>
-              <li>Cloud: AWS (S3, Redshift, Sagemaker, BedRock)</li>
-              <li>Tools: Docker, Git, Lucid Chart</li>
-            </ul>
-          </div>
-        </Window>
-      )}
-
-      {openWindows.includes('contact') && (
-        <Window title="Contact Me - Contact.txt" onClose={() => toggleWindow('contact')}>
-          <div className={`text-sm ${robotoMono.className}`}>
-            <p className="font-bold mb-2">Get in Touch:</p>
-            <p className="mb-2">Feel free to reach out for collaborations or inquiries:</p>
-            <ul className="list-disc pl-5">
-              <li>Email: dennis.lee@example.com</li>
-              <li>LinkedIn: linkedin.com/in/dennis-lee</li>
-              <li>GitHub: github.com/dennis-lee</li>
-            </ul>
-          </div>
-        </Window>
-      )}
-
+    <div className="h-screen bg-[#3a6ea5] flex flex-col" style={{backgroundImage: "url('/windows-xp.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', fontFamily: "'Jersey M54', 'Tahoma', 'Segoe UI', Geneva, Verdana, sans-serif"}}>
+      <Desktop onIconClick={toggleWindow}>
+        {openWindows.includes('about') && (
+          <Window title="My Computer" icon="/icons/my-computer.png" onClose={() => toggleWindow('about')}>
+            <div className="text-sm p-2">
+              <p className="mb-2">Hello, I'm Dennis Lee</p>
+              <p>
+                I'm a Full-Stack Developer and Data Scientist passionate about creating innovative solutions and deriving insights from data.
+              </p>
+            </div>
+          </Window>
+        )}
+  
+        {openWindows.includes('experience') && (
+          <Window title="My Experience" icon="/icons/notepad.png" onClose={() => toggleWindow('experience')}>
+            <div className="text-sm p-2 overflow-y-auto max-h-96">
+              {experienceItems.map((item, index) => (
+                <div key={index} className="mb-4">
+                  <p className="font-bold">{item.title}</p>
+                  <p>{item.company}</p>
+                  <p className="text-xs">{item.timeframe}</p>
+                  <ul className="list-disc pl-5 mt-1">
+                    {item.description.map((desc, i) => (
+                      <li key={i} className="text-xs">{desc}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Window>
+        )}
+  
+        {openWindows.includes('projects') && (
+          <Window title="My Projects" icon="/icons/folder.png" onClose={() => toggleWindow('projects')}>
+            <div className="text-sm p-2">
+              <p className="font-bold mb-2">Featured Projects:</p>
+              <ul className="list-disc pl-5">
+                <li>AI-powered customer issue diagnosis system</li>
+                <li>Hybrid, low latency voice assistant</li>
+                <li>Multi-objective optimization models for transit efficiency</li>
+                <li>Containerized inference engine with 17% latency reduction</li>
+              </ul>
+            </div>
+          </Window>
+        )}
+  
+        {openWindows.includes('skills') && (
+          <Window title="My Skills" icon="/icons/computer.png" onClose={() => toggleWindow('skills')}>
+            <div className="text-sm p-2">
+              <p className="font-bold mb-2">Technical Skills:</p>
+              <ul className="list-disc pl-5">
+                <li>Languages: Python, TypeScript, SQL</li>
+                <li>Frameworks: React, Next.js, PyTorch</li>
+                <li>AI/ML: LLMs, XGBoost, SHAP</li>
+                <li>Cloud: AWS (S3, Redshift, Sagemaker, BedRock)</li>
+                <li>Tools: Docker, Git, Lucid Chart</li>
+              </ul>
+            </div>
+          </Window>
+        )}
+  
+        {openWindows.includes('contact') && (
+          <Window title="Contact Me" icon="/icons/msn.png" onClose={() => toggleWindow('contact')}>
+            <div className="text-sm p-2">
+              <p className="font-bold mb-2">Get in Touch:</p>
+              <p className="mb-2">Feel free to reach out for collaborations or inquiries:</p>
+              <ul className="list-disc pl-5">
+                <li>Email: dennis.lee@example.com</li>
+                <li>LinkedIn: linkedin.com/in/dennis-lee</li>
+                <li>GitHub: github.com/dennis-lee</li>
+              </ul>
+            </div>
+          </Window>
+        )}
+      </Desktop>
+  
       <Taskbar openWindows={openWindows} onWindowClick={toggleWindow} />
     </div>
   );

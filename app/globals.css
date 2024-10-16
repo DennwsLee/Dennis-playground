@@ -82,8 +82,10 @@ body,
 }
 
 body {
-  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #008080;
+  font-family: 'Jersey M54', 'Tahoma', 'Segoe UI', Geneva, Verdana, sans-serif;
+  background-image: url('/images/winxp-wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
   color: #000;
   cursor: url('/cursors/arrow.cur'), auto;
 }
@@ -121,4 +123,17 @@ input, textarea, [contenteditable] {
 
 button, a, [role="button"] {
   cursor: url('/cursors/pointer.cur'), pointer;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.rounded-t-lg {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.rounded-lg {
+  border-radius: 8px;
 }
