@@ -76,7 +76,7 @@ export default function Home() {
       description: [
         "Designed and optimized inference engine, reducing latency by 17%",
         "Forward deployed engineer in integrating containerized docker environments",
-        "Built and deployed 12 web apps using Next.js, Typescript, Python, and SQL",
+        "Built and deployed 2 web apps using Next.js, Typescript, Python, and SQL",
         "Led the integration of S3 and Redshift for seamless data ingestion"
       ]
     }
