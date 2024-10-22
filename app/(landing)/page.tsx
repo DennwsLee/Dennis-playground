@@ -85,7 +85,7 @@ export default function Home() {
   return (
     <div className="h-screen bg-[#3a6ea5] flex flex-col" style={{backgroundImage: "url('/windows-xp.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', fontFamily: "'Jersey M54', 'Tahoma', 'Segoe UI', Geneva, Verdana, sans-serif"}}>
       <Desktop onIconClick={toggleWindow}>
-        {openWindows.includes('about') && (
+        {openWindows.includes('About') && (
           <Window title="My Computer" icon="/icons/my-computer.png" onClose={() => toggleWindow('about')}>
             <div className="text-sm p-2">
               <p className="mb-2">Hello, I'm Dennis Lee</p>
