@@ -1,4 +1,3 @@
-import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { Configuration, OpenAIApi} from "openai";
 
@@ -11,13 +10,8 @@ import { Configuration, OpenAIApi} from "openai";
     req: Request
   ) {
     try {
-        const {userId} = auth();
         const body = await req.json();
         const {messages} = body;
-
-        if (!userId) {
-            return new NextResponse("Unauthorized", { status: 401})
-        }
 
         if (!configuration.apiKey) {
             return new NextResponse("OpenAI API Key not configured", {status: 500})
