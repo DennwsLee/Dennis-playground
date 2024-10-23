@@ -83,19 +83,19 @@ export default function Home() {
   ];
 
   return (
-    <div className="h-screen bg-[#3a6ea5] flex flex-col" style={{backgroundImage: "url('/windows-xp.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', fontFamily: "'Jersey M54', 'Tahoma', 'Segoe UI', Geneva, Verdana, sans-serif"}}>
+    <div className="h-screen bg-[#3a6ea5] flex flex-col" style={{ backgroundImage: "url('/windows-xp.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', fontFamily: "'Jersey M54', 'Tahoma', 'Segoe UI', Geneva, Verdana, sans-serif" }}>
       <Desktop onIconClick={toggleWindow}>
         {openWindows.includes('about') && (
           <Window title="My Computer" icon="/icons/my-computer.png" onClose={() => toggleWindow('about')}>
             <div className="text-sm p-2">
-              <p className="mb-2">Hello, I'm Dennis Lee</p>
+              <p className="mb-2">Hello, I&apos;m Dennis Lee</p>
               <p>
-                I'm a Full-Stack Developer and Data Scientist passionate about creating innovative solutions and deriving insights from data.
+                I&apos;m a Full-Stack Developer and Data Scientist passionate about creating innovative solutions and deriving insights from data.
               </p>
             </div>
           </Window>
         )}
-  
+
         {openWindows.includes('experience') && (
           <Window title="My Experience" icon="/icons/notepad.png" onClose={() => toggleWindow('experience')}>
             <div className="text-sm p-2 overflow-y-auto max-h-96">
@@ -114,7 +114,7 @@ export default function Home() {
             </div>
           </Window>
         )}
-  
+
         {openWindows.includes('projects') && (
           <Window title="My Projects" icon="/icons/folder.png" onClose={() => toggleWindow('projects')}>
             <div className="text-sm p-2">
@@ -128,7 +128,7 @@ export default function Home() {
             </div>
           </Window>
         )}
-  
+
         {openWindows.includes('skills') && (
           <Window title="My Skills" icon="/icons/computer.png" onClose={() => toggleWindow('skills')}>
             <div className="text-sm p-2">
@@ -143,7 +143,7 @@ export default function Home() {
             </div>
           </Window>
         )}
-  
+
         {openWindows.includes('contact') && (
           <Window title="Contact Me" icon="/icons/msn.png" onClose={() => toggleWindow('contact')}>
             <div className="text-sm p-2">
@@ -158,7 +158,7 @@ export default function Home() {
           </Window>
         )}
       </Desktop>
-  
+
       <Taskbar openWindows={openWindows} onWindowClick={toggleWindow} />
     </div>
   );
