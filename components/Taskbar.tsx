@@ -23,7 +23,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ openWindows, onWindowClick }) => {
           className="bg-gradient-to-b from-[#267426] to-[#01e201] text-white px-5 py-3 mr-2 rounded-r-xl flex items-center font-bold text-lg"
           onClick={toggleStartMenu}
         >
-          <Image src="/logo.png" alt="Start" width={24} height={24} className="mr-2 shadow-md" />
+          <Image src="/logo.png" alt="Start" width={24} height={24} className="mr-2 " />
           start
         </button>
         {openWindows.map((window) => (
