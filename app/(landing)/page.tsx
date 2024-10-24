@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Desktop from '@/components/Desktop';
 import Window from '@/components/Window';
 import Taskbar from '@/components/Taskbar';
-import Image from 'next/image';
 
 export default function Home() {
   const [openWindows, setOpenWindows] = useState<string[]>([]);
